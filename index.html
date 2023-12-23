@@ -1,35 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Maintenance</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    .modal-message {
+      color: red;
+    }
+    .center-button {
+      text-align: center;
+    }
+    /* Animation for the Buy New Domain button */
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-10px);
+      }
+    }
+    .shake-effect {
+      animation: shake 0.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
 
-  <title>J-Forex</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <!-- Your modal HTML structure -->
+  <div class="modal" id="maintenanceModal" tabindex="-1" role="dialog" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h5 class="modal-title w-100" id="maintenanceModalLabel">SHUTDOWN NOTICE</h5>
+        </div>
+        <div class="modal-body">
+          <p id="countdown" class="modal-message">Initializing...</p>
+          <!-- Animated "Buy New Domain" button with an icon -->
+          <div class="center-button">
+            <button type="button" class="btn btn-success shake-effect" id="buyNewDomainBtn">
+              <span>&#x1F449;</span> Buy New Domain
+            </button>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <!-- "Ok, I understand" button -->
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Ok, I understand.</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.jpg" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const countdownEndDate = new Date('2023-12-22T00:00:00Z').getTime();
+      const countdownEndDate = new Date('2023-12-13T00:00:00Z').getTime();
 
       function updateCountdown() {
         const now = new Date().getTime();
@@ -41,12 +69,12 @@
           const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
           // Change the message and add a line break
-          document.getElementById('countdown').innerHTML = `This website is currently hosted on a temporary link and it will be removed in the next 24 hours. If you are the developer, we recommend purchasing a domain name to ensure uninterrupted access for your users.<p><br>It will be disabled in <strong><span class="modal-message">${hours} Hours, ${minutes} Minutes, and ${seconds} Seconds.</strong></span>`;
+          document.getElementById('countdown').innerHTML = `This website is currently hosted on a temporary link, and it will be deleted in the next 24 hours.<br>If you are the developer, we recommend purchasing a domain name to avoid losing your content and ensure uninterrupted access for your users.<br>The website will be deleted in <span class="modal-message">${hours} Hours, ${minutes} Minutes, and ${seconds} Seconds.</span>`;
         } else {
           // Change the message when the time ends
           const deletedMessage = document.createElement('p');
           deletedMessage.className = 'modal-message';
-          deletedMessage.innerHTML = '<strong>This website has been deactivated from our servers. If you are the developer, please purchase a domain name to continue using it.</strong>' ;
+          deletedMessage.innerHTML = 'This website has been deleted from our temporary link. Please purchase a domain name to ensure uninterrupted access for your users.';
           document.getElementById('countdown').replaceWith(deletedMessage);
           // Remove the "Ok, I understand" button
           document.querySelector('.modal-footer').remove();
@@ -60,686 +88,13 @@
         backdrop: 'static',
         keyboard: false
       });
+
+      // Add click event for animated "Buy New Domain" button
+      document.getElementById('buyNewDomainBtn').addEventListener('click', function () {
+        // Replace 'YOUR_DOMAIN_REGISTRAR_URL' with the actual URL of the domain registrar
+        window.location.href = 'https://www.godaddy.com/';
+      });
     });
   </script>
-  
-</head>
-<body>
-
-
-<!-- Your modal HTML structure -->
-<div class="modal" id="maintenanceModal" tabindex="-1" role="dialog" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header text-center">
-  <h5 class="modal-title w-100" id="maintenanceModalLabel">SHUTDOWN NOTICE</h5>
-</div>
-<div class="modal-body">
-  <p id="countdown" class="valid-message">Initializing...</p>
-</div>
-<div class="modal-footer justify-content-center">
-  <!-- "Ok, I understand" button -->
-  <button type="button" class="btn btn-primary" data-dismiss="modal">Ok, I understand.</button>
-</div>
-</div>
-</div>
-</div>
 </body>
-
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top header-transparent">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <div class="logo">
-<!--         <h1 class="text-light"><a href="index.html"><span>Squadfree</span></a></h1>
-        <! Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
-      </div> -->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Gallery</a></li>
-          <li><a class="nav-link scrollto" href="#team">Administrators</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div class="hero-container" data-aos="fade-up">
-      <h1>J-Forex</h1>
-      <h2>The Art of Strategy</h2>
-      <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-<!-- ======= About Section ======= -->
-<section id="about" class="about">
-  <div class="container">
-    <div class="row no-gutters">
-      <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
-        <div class="content">
-          <h3>Who We Are</h3>
-          <p class="text-justify">
-            Ujenzi Group of Companies is a dynamic conglomerate committed to excellence and innovation. As part of the Ujenzi family, J-Forex stands at the forefront of our diversified ventures, contributing to the group's success and growth.
-
-            <p>
-              <strong>J-Forex:</strong> A Division of Ujenzi Group
-            </p>
-
-            <p>
-              J-Forex, a proud member of the Ujenzi Group, specializes in comprehensive financial services, with a primary focus on foreign exchange (forex) trading. Our commitment to excellence, transparency, and customer satisfaction sets us apart in the competitive financial market.
-            </p>
-
-            <p>
-              At J-Forex, we leverage cutting-edge technology and a team of seasoned financial experts to provide tailored solutions to our clients. Whether you're an individual investor or a corporate entity, our services are designed to meet your unique financial needs.
-            </p>
-
-            <p>
-              Explore the world of financial possibilities with J-Forex, where innovation meets reliability. Join us on this journey towards financial success and security.
-            </p>
-          </p>
-        </div>
-      </div>
-      <!-- Add additional content or sections as needed -->
-    </div>
-  </div>
-</section>
-<!-- ======= About Section ======= -->
-<section id="about" class="about">
-  <div class="container">
-    <div class="row no-gutters">
-      <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
-        <div class="content">
-          <h3>About Us</h3>
-          <div class="row">
-              <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <i class="bx bx-receipt"></i>
-                  <h4>OUR AIM</h4>
-                  <p>J-Forex aims to be a leading financial services provider, bringing innovation and excellence to the world of forex trading and insurance within the Ujenzi Group of Companies. Our commitment extends beyond traditional financial services, as we aspire to redefine industry standards and create a dynamic, client-centric environment.</p>
-              </div><br>
-              <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-                  <i class="bx bx-cube-alt"></i>
-                  <h4>MISSION</h4>
-                  <p>Our mission at J-Forex is to deliver unparalleled financial services, fostering economic growth and prosperity. We are committed to making a positive impact on the financial well-being of our clients and the communities we serve. By prioritizing transparency, integrity, and client satisfaction, we strive to exceed expectations and set new benchmarks in the financial industry.</p>
-              </div>
-              <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-                  <i class="bx bx-images"></i>
-                  <h4>VISION</h4>
-                  <p>Our vision is to create a financial landscape where every individual and business thrives. We strive to provide a world-class platform for forex trading, ensuring the financial security and success of our clients. With a forward-thinking approach, we envision a future where access to financial opportunities is inclusive, and our clients achieve their goals with confidence.</p>
-              </div>
-              <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-                  <i class="bx bx-shield"></i>
-                  <h4>OUR SERVICES</h4>
-                  <p>At J-Forex, we specialize in forex trading solutions. Our goal is to offer reliable, transparent, and innovative financial services that meet the diverse needs of our clients. From cutting-edge trading platforms to comprehensive insurance solutions, we are dedicated to providing a seamless and secure experience for our clients to navigate the dynamic world of finance.</p>
-              </div>
-              <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-                  <i class="bx bx-cube-alt"></i>
-                  <h4>JOIN US</h4>
-                  <p>We invite individuals, businesses, and partners to join us on this financial journey. Together, let's create a world where financial success is within everyone's reach. By collaborating with J-Forex, you become part of a community-driven initiative that empowers individuals and businesses to achieve their financial aspirations with confidence and integrity.</p>
-              </div>
-          </div>
-          
-          </div>
-        </div><!-- End .content-->
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ======= End About Section ======= -->
-
-
-  <!-- ======= Services Section ======= -->
-<section id="services" class="services">
-  <div class="container">
-
-    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-      <h2>OUR CORE PRINCIPLES</h2>
-      <p>Discover the principles that define J-Forex:</p>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up">
-          <div class="icon"><i class="bi bi-currency-exchange"></i></div>
-          <h4 class="title"><a href="">Financial Excellence</a></h4>
-          <p class="description">Committed to delivering financial excellence, J-Forex stands as a beacon in the world of financial services. Our dedicated team of seasoned professionals brings a wealth of experience to the table, offering a comprehensive suite of solutions that empower individuals and businesses to navigate the forex market with unparalleled precision and expertise. At J-Forex, we go beyond traditional financial services; we serve as trusted partners in our clients' financial journeys, working hand in hand to unlock new opportunities and achieve sustainable growth.</p>
-
-          <br><p class="description">Our approach extends beyond mere transactions; it is rooted in a deep understanding of the intricacies of the forex market and a commitment to delivering results. Through meticulous analysis, innovative strategies, and a client-focused mindset, we ensure that our clients not only weather the complexities of the financial landscape but thrive in it. Whether you're a seasoned investor or just starting, J-Forex is your ally in realizing financial prosperity. Join us on this transformative journey where financial excellence is not just a goal but a commitment we uphold every day.</p>
-                  </div>
-      </div>
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-          <div class="icon"><i class="bi bi-cash-coin"></i></div>
-          <h4 class="title"><a href="">Transparency</a></h4>
-          <p class="description">At J-Forex, we prioritize transparency in all our financial dealings. We provide clear insights into the forex trading processes, ensuring honesty and openness.</p>
-
-          <br>
-          
-          <p class="description">Our commitment to transparency is more than a principle; it's a cornerstone of our relationship with clients. We believe in fostering trust by demystifying the complexities of forex trading, offering a clear view of our processes. By doing so, we empower our clients to make informed decisions, creating a foundation for a transparent and trustworthy partnership. Join us at J-Forex, where transparency is not just a promise but an integral part of how we redefine financial services.</p>
-                  </div>
-      </div>
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-          <div class="icon"><i class="bi bi-bezier"></i></div>
-          <h4 class="title"><a href="">Innovation</a></h4>
-          <p class="description">We embrace innovation in forex trading and insurance services. J-Forex stands at the forefront of the financial industry, constantly pushing boundaries to redefine financial strategies and solutions.</p>
-
-          <br>
-          
-          <p class="description">Our commitment to innovation goes beyond buzzwords; it's ingrained in our culture. At J-Forex, we foster a dynamic environment where creativity and forward-thinking are encouraged. By staying at the cutting edge of technology and financial trends, we ensure that our clients benefit from the latest advancements. Join us in exploring new frontiers in forex trading and financial services, where innovation is not just a buzzword but a driving force behind our success.</p>
-                  </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-          <div class="icon"><i class="bi bi-person-hearts"></i></div>
-          <h4 class="title"><a href="">Client-Centric Approach</a></h4>
-          <p class="description">J-Forex is dedicated to providing client-centric services, placing the needs and satisfaction of our clients at the forefront. Our commitment goes beyond traditional financial services; we strive to create a personalized and effective financial experience for each client.</p>
-
-          <br>
-          
-          <p class="description">At J-Forex, we understand that every client is unique, with distinct financial goals and aspirations. Our team of dedicated professionals works tirelessly to tailor our services to meet individual needs, ensuring that every client receives the attention and solutions they deserve. Join us on a financial journey where your needs are not just met but exceeded, and your satisfaction is our top priority.</p>
-                  </div>
-      </div>
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-          <div class="icon"><i class="bi bi-file-earmark-bar-graph-fill"></i></div>
-          <h4 class="title"><a href="">Integrity</a></h4>
-          <p class="description">J-Forex operates with the utmost integrity, setting high ethical standards to ensure trust and reliability in every financial service we provide. Our commitment to integrity forms the cornerstone of our operations, creating a foundation built on transparency and honesty.</p>
-
-          <br>
-          
-          <p class="description">At J-Forex, we believe that integrity is non-negotiable, and it permeates every aspect of our business. We understand the importance of earning and maintaining the trust of our clients, and we do so by adhering to the highest ethical principles. Join us in an environment where integrity is not just a value but a guiding principle that shapes our interactions and ensures the credibility of our financial services.</p>
-                  </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<!-- End Services Section -->
-
-    
-<!-- ======= More Services Section ======= -->
-<section id="services" class="services">
-  <div class="container">
-
-    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-      <h2>OUR SPECIALTIES</h2>
-      <p>Discover our core areas of expertise:</p>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up">
-          <div class="icon"><i class="bx bx-line-chart"></i></div>
-          <h4 class="title"><a href="">Forex Trading</a></h4>
-          <p class="description">In the dynamic world of Forex trading, J-Forex excels as a beacon of expertise and innovation. Our seasoned team of professionals navigates the complexities of the Forex market with finesse, providing clients with expert insights and proven strategies for success. We understand the nuances of the ever-changing market landscape and leverage our knowledge to empower clients with the tools needed to make informed decisions and achieve their trading goals.</p>
-
-          <br>
-          
-          <p class="description">At J-Forex, our commitment goes beyond conventional trading services. We are dedicated to fostering a collaborative and educational environment, ensuring that clients not only participate in the Forex market but thrive in it. Join us in this dynamic journey, where excellence is not just a goal; it's a standard we uphold in every aspect of Forex trading.</p>
-                  </div>
-      </div>
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-          <div class="icon"><i class="bx bx-layer"></i></div>
-          <h4 class="title"><a href="">Financial Innovation</a></h4>
-          <p class="description">Dedicated to fostering financial innovation, J-Forex strives to create cutting-edge solutions for our clients in the ever-evolving financial landscape. Our commitment to innovation is more than a goal; it's a driving force that propels us to explore new horizons, adopt advanced technologies, and pioneer groundbreaking approaches to redefine the financial services industry.</p>
-
-          <br>
-          
-          <p class="description">At J-Forex, we believe that true progress comes from pushing the boundaries of what's possible. By consistently challenging ourselves to think differently and embrace innovation, we aim to empower our clients with forward-thinking financial solutions that not only meet but exceed their expectations.</p>
-                  </div>
-      </div>
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-          <div class="icon"><i class="bx bx-bar-chart"></i></div>
-          <h4 class="title"><a href="">Market Transparency</a></h4>
-          <p class="description">At J-Forex, transparency is at the core of our operations. We prioritize providing clear insights into market operations, ensuring that our clients have a comprehensive understanding of market dynamics and trends. In the ever-changing world of financial markets, having transparent and reliable information is paramount, and we are committed to delivering just that.</p>
-
-          <br>
-          
-          <p class="description">Our dedication to transparency goes beyond mere disclosure; it is a commitment to building trust and fostering long-term relationships with our clients. With a clear view of market operations, our clients can make informed decisions, navigate market trends with confidence, and embark on a journey of financial success.</p>
-                  </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-          <div class="icon"><i class="bi bi-person-badge"></i></div>
-          <h4 class="title"><a href="">Collaborative Partnerships</a></h4>
-          <p class="description">Collaboration is at the heart of J-Forex's philosophy. We firmly believe in the power of working together to achieve greater heights in the financial landscape. When you partner with us, you're not just a client; you become an integral part of a collaborative effort to elevate your trading experience and achieve financial success together.</p>
-
-          <br>
-          
-          <p class="description">Our team is dedicated to building strong and mutually beneficial partnerships. By joining forces with J-Forex, you gain access to a wealth of expertise, innovative solutions, and a support system that is committed to your success. Let's embark on this journey together and unlock new possibilities in the world of financial trading.</p>
-                  </div>
-      </div>
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-          <div class="icon"><i class="bx bx-target-lock"></i></div>
-          <h4 class="title"><a href="">Client Focus</a></h4>
-          <p class="description">At J-Forex, we recognize that each client is unique, and their financial goals are specific to their individual needs. Our focus is on understanding and meeting these unique needs, ensuring a personalized and impactful trading journey for every client.</p>
-
-          <br>
-          
-          <p class="description">We go beyond one-size-fits-all solutions, offering tailored strategies and personalized services that align with your objectives. Your success is our priority, and we are committed to providing a trading experience that is not only effective but also meaningful and impactful. Join us, and let's navigate the financial markets together, ensuring your journey is as unique as you are.</p>
-                  </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<!-- End More Services Section -->
-
-
-   <!-- ======= Counts Section ======= -->
-<section id="counts" class="counts section-bg">
-  <div class="container">
-
-    <div class="row no-gutters">
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-        <div class="count-box">
-          <i class="bi bi-bar-chart"></i>
-          <span data-purecounter-start="0" data-purecounter-end="8462" data-purecounter-duration="5" class="purecounter"></span>
-          <p><strong>Successful Trades</strong></p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-        <div class="count-box">
-          <i class="bi bi-people"></i>
-          <span data-purecounter-start="0" data-purecounter-end="9724" data-purecounter-duration="4" class="purecounter"></span>
-          <p><strong>Clients Served</strong></p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-        <div class="count-box">
-          <i class="bi bi-hourglass"></i>
-          <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="3" class="purecounter"></span>
-          <p><strong>Trading Hours</strong></p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-        <div class="count-box">
-          <i class="bi bi-trophy"></i>
-          <span data-purecounter-start="0" data-purecounter-end="13" data-purecounter-duration="1" class="purecounter"></span>
-          <p><strong>Awards Won</strong></p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<!-- End Counts Section -->
-
-
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="text-center">
-          <h3>Call To Action</h3>
-          <p> If you would like to support us, contact us now!</p>
-          <a class="cta-btn" href="wtai://wp/mc;+256312225711">Call To Action 📞</a>
-        </div>
-
-      </div>
-    </section><!-- End Cta Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <!-- <section id="portfolio" class="portfolio">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Gallery</h2>
-          <p>Here are some of the photos taken at our school</p>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
-                <a href="assets/img/portfolio/portfolio-1.jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
-                <a href="assets/img/portfolio/portfolio-2.jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
-              </div>
-            </div>
-          </div>
-
-         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
-                <a href="assets/img/portfolio/portfolio-3.jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
-              </div>
-            </div>
-          </div>
-
-         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
-                <a href="assets/img/portfolio/portfolio-4.jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
-              </div>
-            </div>
-          </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
-                <a href="assets/img/portfolio/portfolio-5.jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
-                <a href="assets/img/portfolio/portfolio-6.jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
-              </div>
-            </div>
-          </div>
-
-         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
-                <a href="assets/img/portfolio/portfolio-7.jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
-              </div>
-            </div>
-          </div>
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
-                <a href="assets/img/portfolio/portfolio-8.jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
-              </div>
-            </div>
-          </div>
-
-           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><iconify-icon icon="fxemoji:leftmagnifyingglass" style="color: blue;" width="50"></iconify-icon></a>
-                <a href="assets/img/portfolio/portfolio-9.jpg" title="More Details"><iconify-icon icon="emojione:eye-in-speech-bubble" style="color: blue;" width="50"></iconify-icon></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>End Portfolio Section -->
-
-<!-- ======= About Section ======= -->
-<section id="about" class="about">
-  <div class="container">
-
-    <div class="row no-gutters">
-      
-      <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
-        <div class="content">
-          <!-- <center><a href="photos.html" class="about-btn">VIEW MORE PHOTOS<i class="bx bx-chevron-right"></i></a><br></center><p></p> -->
-
-          <h3><br>ORGANISATIONAL OBJECTIVES</h3>
-          1. To provide expert guidance and education on Forex trading in vulnerable communities, empowering individuals with valuable financial knowledge.<br>
-          2. To enhance the financial well-being and health of individuals by offering innovative financial solutions and conducting financial education programs.<br>
-          3. To elevate the trading experience and quality of life by providing market transparency, offering cutting-edge trading tools, and promoting financial literacy.<br>
-          4. To support traders and investors through collaborative partnerships, creating a network of like-minded individuals in the financial community.<br>
-          5. To alleviate financial challenges by providing skills training and personalized support, especially to women and youth in marginalized communities.<br>
-          6. To advocate for ethical trading practices, fight against fraud, and promote a safe and secure trading environment.<br>
-          7. To establish income-generating projects that contribute to the sustainability of J-Forex and its mission.<br>
-          8. To continually explore and implement activities that align with J-Forex's goals and objectives in the dynamic financial landscape.<br>
-          
-          <h3><br>RESOURCE UTILISATION</h3>
-          1. Funding from members and stakeholders within the financial community, including contributions in cash and kind.<br>
-          2. Collaboration with the trading community, utilizing their expertise, resources, and support to enhance the trading environment.<br>
-          3. Partnership with international financial organizations and institutions that share J-Forex's mission and values.<br>
-          4. Agency funds from individuals seeking professional financial services and guidance from a trusted organization.<br>
-          
-          <h3><br>REQUEST FOR COLLABORATION</h3>
-          The demand for J-Forex's services in providing expert financial guidance, innovative trading solutions, and support for traders has grown significantly. We invite organizations and individuals to join us in our commitment to empower and elevate the financial well-being of individuals and communities. Your contributions will help us continue delivering high-quality services with a focus on professionalism and ethical trading practices.
-          </div>
-          </div>
-          
-      
-          </div>
-        </div><!-- End .content-->
-      </div>
-    </div>
-
-  </div>
-</section><!-- End About Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Testimonials</h2>
-          <p>See what our clients have to say about their experience with J-Forex</p>
-        </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  J-Forex has transformed my trading experience. Their expert guidance and cutting-edge tools have made a significant impact on my success in the financial markets. <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>              </p>
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Hajarah Kyomuhendo</h3>
-                <h4>Forex Trader</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  I appreciate the transparency and professionalism of J-Forex. Their commitment to ethical trading practices and innovation in the financial industry is truly commendable.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Kizito Yusuf</h3>
-                <h4>Investor</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-          <h2>Administrators</h2>
-          <p>These are the heads of our company</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="fade-up">
-              <div class="pic"><img src="Salome Wangui Kahora.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Salome Wangui Kahora</h4>
-                <p>0783919781</p>
-                <span>CEO</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>     
-          
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="fade-up">
-              <div class="pic"><img src="Matsiko Fred.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Matsiko Fred</h4>
-                <p>0783919781</p>
-                <span>Financial Expert</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="member" data-aos="fade-up" data-aos-delay="150">
-              <div class="pic"><img src="Sserwadda Ryan.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Sserwadda Ryan</h4>
-                <p>0783919781</p> 
-                <span>Sales Representative</span>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-
-      </div>
-    </section><!-- End Team Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Use the following information to get in touch with us today!</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h4>Location:</h4>
-                <p>Lotis Tower, Level 6 and 8<br>
-                  P.O Box 2939, Kampala
-
-                  <br> Kampala, Uganda.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-envelope"></i>
-              <h4>Email:</h4>
-                <p> info@ujenzigroup.com</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-phone-call"></i>
-              <h4>Call Us:</h4>
-              <p>+256 312 225 711</p>
-            </div>
-          </div>     
-
-
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-6 "><center>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d63835.99625238537!2d32.522489944588955!3d0.33587671316673234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d0.3369699!2d32.541657199999996!4m5!1s0x177dbbffaebd5161%3A0x5af5cc1ea30eab48!2slotis%20tower%20google%20map!3m2!1d0.3217083!2d32.585103499999995!5e0!3m2!1sen!2sug!4v1702839709376!5m2!1sen!2sug" width="350" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
-          
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-
-    <footer class="text-center">
-      <div class="credits">
-          <script>
-              document.write("© Ujenzi Group of Companies " + new Date().getFullYear());
-          </script>
-      </div>
-  </footer>
-  
-</div>
-</div>
-</footer><!-- End Footer -->
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
 </html>
